@@ -1,3 +1,4 @@
+import 'package:despesas_pessoais/components/chart.dart';
 import 'package:despesas_pessoais/components/transaction_form.dart';
 import 'package:despesas_pessoais/models/transaction.dart';
 import 'package:flutter/material.dart';
@@ -14,26 +15,22 @@ class ExpensesApp extends StatelessWidget {
     return MaterialApp(
       home: MyHomePage(),
       theme: ThemeData().copyWith(
-        colorScheme: ThemeData().colorScheme.copyWith(
-          primary: Color(0xFF57cc99),
-          secondary: Color(0xFF80ed99)
-        ),
-        textTheme: ThemeData().textTheme.copyWith(
-          titleLarge: TextStyle(
-            fontFamily: 'Roboto',
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ), 
-        ),
-        appBarTheme: AppBarTheme(
-          titleTextStyle: TextStyle(
+          colorScheme: ThemeData().colorScheme.copyWith(
+              primary: Color(0xFF57cc99), secondary: Color(0xFF80ed99)),
+          textTheme: ThemeData().textTheme.copyWith(
+                titleLarge: TextStyle(
+                  fontFamily: 'Roboto',
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
+          appBarTheme: AppBarTheme(
+              titleTextStyle: TextStyle(
             fontFamily: 'Roboto',
             fontSize: 20,
             // fontWeight: FontWeight.bold,
-          )
-        )
-      ),
+          ))),
     );
   }
 }
@@ -44,7 +41,32 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Transaction> _transactions = [];
+  final List<Transaction> _transactions = [
+    Transaction(
+      id: Random().nextDouble().toString(),
+      title: "Teste antigo",
+      value: 1002.50,
+      date: DateTime.now().subtract(Duration(days: 30)),
+    ),
+    Transaction(
+      id: Random().nextDouble().toString(),
+      title: "Teste 1",
+      value: 314.50,
+      date: DateTime.now().subtract(Duration(days: 3)),
+    ),
+    Transaction(
+      id: Random().nextDouble().toString(),
+      title: "Teste 2",
+      value: 210.44,
+      date: DateTime.now().subtract(Duration(days: 4)),
+    )
+  ];
+
+  get _recentTransactions {
+    return _transactions.where((element) {
+      return element.date.isAfter(DateTime.now().subtract(Duration(days: 7)));      
+    }).toList(); 
+  }
 
   _addTransaction(String title, double value) {
     final newTransaction = Transaction(
@@ -84,12 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              width: double.infinity,
-              child: Card(
-                child: Text('Gráfico'),
-              ),
-            ),
+            Chart(_recentTransactions),
             TransactionList(_transactions),
           ],
         ),
