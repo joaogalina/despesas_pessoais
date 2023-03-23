@@ -24,7 +24,8 @@ class TransactionList extends StatelessWidget {
                   height: 200,
                   child: Image.asset(
                     'assets/images/Dollar.png',
-                    fit: BoxFit.cover,
+                    color: Colors.black.withOpacity(0.5),
+                    fit: BoxFit.contain,
                   ),
                 )
               ],

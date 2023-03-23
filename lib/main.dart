@@ -20,7 +20,7 @@ class ExpensesApp extends StatelessWidget {
         ),
         textTheme: ThemeData().textTheme.copyWith(
           titleLarge: TextStyle(
-            fontFamily: 'Lora',
+            fontFamily: 'Roboto',
             fontSize: 18,
             fontWeight: FontWeight.bold,
             color: Colors.black,
@@ -28,9 +28,9 @@ class ExpensesApp extends StatelessWidget {
         ),
         appBarTheme: AppBarTheme(
           titleTextStyle: TextStyle(
-            fontFamily: 'Lora',
+            fontFamily: 'Roboto',
             fontSize: 20,
-            fontWeight: FontWeight.bold,
+            // fontWeight: FontWeight.bold,
           )
         )
       ),
