@@ -15,22 +15,26 @@ class ExpensesApp extends StatelessWidget {
     return MaterialApp(
       home: MyHomePage(),
       theme: ThemeData().copyWith(
-          colorScheme: ThemeData().colorScheme.copyWith(
-              primary: Color(0xFF57cc99), secondary: Color(0xFF80ed99)),
-          textTheme: ThemeData().textTheme.copyWith(
-                titleLarge: TextStyle(
-                  fontFamily: 'Roboto',
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-              ),
-          appBarTheme: AppBarTheme(
-              titleTextStyle: TextStyle(
+        colorScheme: ThemeData().colorScheme.copyWith(
+          primary: Color(0xFF57cc99),
+          secondary: Color(0xFF80ed99),
+        ),
+        textTheme: ThemeData().textTheme.copyWith(
+          titleLarge: TextStyle(
+            fontFamily: 'Roboto',
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+        ),
+        appBarTheme: AppBarTheme(
+          titleTextStyle: TextStyle(
             fontFamily: 'Roboto',
             fontSize: 20,
             // fontWeight: FontWeight.bold,
-          ))),
+          ),
+        ),
+      ),
     );
   }
 }
@@ -64,8 +68,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   get _recentTransactions {
     return _transactions.where((element) {
-      return element.date.isAfter(DateTime.now().subtract(Duration(days: 7)));      
-    }).toList(); 
+      return element.date.isAfter(DateTime.now().subtract(Duration(days: 7)));
+    }).toList();
   }
 
   _addTransaction(String title, double value) {
