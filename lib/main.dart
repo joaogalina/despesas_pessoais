@@ -1,9 +1,9 @@
+import 'package:despesas_pessoais/models/transaction.dart';
 import 'package:despesas_pessoais/components/chart.dart';
 import 'package:despesas_pessoais/components/transaction_form.dart';
-import 'package:despesas_pessoais/models/transaction.dart';
+import 'package:despesas_pessoais/components/transaction_list.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
-import 'package:despesas_pessoais/components/transaction_list.dart';
 
 void main() {
   runApp(ExpensesApp());
